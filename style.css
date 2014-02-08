@@ -1,13 +1,18 @@
 html,
 body{
-  width: 288px;
-  height: 512px;
   margin: 0;
 }
 
-body {
+#scene {
+  width: 288px;
+  height: 512px;
   background: url(background.png) no-repeat;
   cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -256px 0 0 -144px;
 }
 
 #floor {
@@ -15,11 +20,17 @@ body {
   height: 100%;
   background: url(floor.png) repeat-x bottom;
   -webkit-animation: floor 1s linear 0 infinite;
+
+  position: relative;
+  z-index: 1;
 }
 
 @-webkit-keyframes floor {
+  from {
+    background-position: 0px bottom;
+  }
   to {
-    background-position: -24px bottom;
+    background-position: -48px bottom;
   }
 }
 
@@ -48,4 +59,44 @@ body {
   50% {
     -webkit-transform: translateY(-10px);
   }
+}
+
+.barrier {
+  width: 52px;
+  height: 100px;
+
+  position:absolute;
+
+  /* top: 24px-276px; */
+  top: 150px;
+  -webkit-animation: barrier 7083ms linear 0 infinite;
+}
+
+@-webkit-keyframes barrier {
+  from {
+    left: 288px;
+  }
+  to {
+    left: -52px;
+  }
+}
+
+.barrier::before,
+.barrier::after {
+  content: ' ';
+  display: block;
+  background: url(barrier.png);
+  width: 52px;
+  height: 320px;
+
+  position: relative;
+}
+
+.barrier::before {
+  -webkit-transform: scaleY(-1);
+  top: -320px;
+}
+
+.barrier::after {
+  top: -220px;
 }
