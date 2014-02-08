@@ -39,3 +39,13 @@ body {
     background-position: bottom;
   }
 }
+
+.ready #bird {
+  -webkit-animation: bird 400ms steps(3, end) 0 infinite, bird-ready 800ms ease-in-out 0 infinite;
+}
+
+@-webkit-keyframes bird-ready {
+  50% {
+    -webkit-transform: translateY(-10px);
+  }
+}
